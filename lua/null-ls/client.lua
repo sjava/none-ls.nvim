@@ -8,10 +8,20 @@ local u = require("null-ls.utils")
 local api = vim.api
 local lsp = vim.lsp
 
+local allowed_buftypes = {
+    [""] = true,
+    ["acwrite"] = true,
+}
+
 local client, id
 
 local should_attach = function(bufnr)
-    if api.nvim_buf_get_option(bufnr, "buftype") ~= "" or api.nvim_buf_get_name(bufnr) == "" then
+    local buftype = api.nvim_buf_get_option(bufnr, "buftype")
+    if not allowed_buftypes[buftype] then
+        return false
+    end
+
+    if api.nvim_buf_get_name(bufnr) == "" then
         return false
     end
 
