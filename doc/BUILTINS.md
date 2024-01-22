@@ -5131,6 +5131,23 @@ local sources = { null_ls.builtins.formatting.verible_verilog_format }
 - Command: `verible-verilog-format`
 - Args: `{ "--stdin_name", "$FILENAME", "-" }`
 
+### [vfmt](https://github.com/vlang/v)
+
+Reformat Vlang source into canonical form.
+
+#### Usage
+
+```lua
+local sources = { null_ls.builtins.formatting.vfmt }
+```
+
+#### Defaults
+
+- Filetypes: `{ "vlang" }`
+- Method: `formatting`
+- Command: `v`
+- Args: `{ "fmt", "-w", "$FILENAME" }`
+
 ### [xmlformat](https://github.com/pamoller/xmlformatter)
 
 xmlformatter is an Open Source Python package, which provides formatting of XML documents.
